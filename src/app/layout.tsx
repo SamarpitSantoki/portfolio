@@ -21,9 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        <script
+          src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"
+          defer
+        ></script>
       </head>
       <body className={inter.className}>{children}</body>
     </html>
-  )
+  );
 }
