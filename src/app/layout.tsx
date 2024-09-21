@@ -67,6 +67,13 @@ export const metadata: Metadata = {
   },
 };
 
+import posthog from "posthog-js";
+
+posthog.init("phc_dtk6rwqmh7q4VBNKwykLvSRaVfRkMJGXaOajSN2i9Dn", {
+  api_host: "https://us.i.posthog.com",
+  person_profiles: "always",
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{

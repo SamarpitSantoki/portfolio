@@ -6,7 +6,7 @@ function ProjectsSection() {
     {
       title: "VP Financials",
       /*
-        FOr this i build them a portfolio site from where their members can access their services and also get to know more about them.
+        For this i build them a portfolio site from where their members can access their services and also get to know more about them.
         aslo build an admin dashboard for them to manage their members and also their services.
         This was for a youtuber called VP Financials
       */
