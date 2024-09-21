@@ -68,8 +68,9 @@ export const metadata: Metadata = {
 };
 
 import posthog from "posthog-js";
+import { CSPostHogProvider } from "@/providers/posthog-provider";
 
-posthog.init("phc_dtk6rwqmh7q4VBNKwykLvSRaVfRkMJGXaOajSN2i9Dn", {
+posthog.init("", {
   api_host: "https://us.i.posthog.com",
   person_profiles: "always",
 });
@@ -81,7 +82,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={ibm_plex_sans.className}>{children}</body>
+      <CSPostHogProvider>
+        <body className={ibm_plex_sans.className}>{children}</body>
+      </CSPostHogProvider>
     </html>
   );
 }
