@@ -58,7 +58,7 @@ function MainSection() {
                 aria-label="Job Title"
                 className="max-w-[600px] text-gray-200 md:text-xl"
               >
-                I'm a full-stack developer with a passion for creating
+                I&apos;m a full-stack developer with a passion for creating
                 innovative and user-friendly web applications.
               </h3>
             </div>
