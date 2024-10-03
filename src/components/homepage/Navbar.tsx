@@ -1,52 +1,65 @@
+"use client";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 function Navbar() {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <header className="px-4 lg:px-6 h-14 flex items-center">
+    <motion.header
+      className="px-4 lg:px-6 h-14 flex items-center bg-white shadow-sm"
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <Link
         href="#"
         className="flex items-center justify-center"
         prefetch={false}
       >
-        <LaptopIcon className="h-6 w-6" />
-        <span className="sr-only">John Does Portfolio</span>
+        <motion.div
+          className="flex items-center"
+          whileHover={{ scale: 1.05 }}
+          onHoverStart={() => setIsHovered(true)}
+          onHoverEnd={() => setIsHovered(false)}
+        >
+          <CodeIcon className="h-6 w-6 text-purple-600" />
+          <motion.span
+            className="ml-2 text-lg font-semibold text-gray-800"
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
+          >
+            Samarpit Santoki
+          </motion.span>
+        </motion.div>
       </Link>
       <nav className="ml-auto flex gap-4 sm:gap-6">
-        <Link
-          href="#"
-          className="text-sm font-medium hover:underline underline-offset-4"
-          prefetch={false}
-        >
-          About
-        </Link>
-        <Link
-          href="#"
-          className="text-sm font-medium hover:underline underline-offset-4"
-          prefetch={false}
-        >
-          Skills
-        </Link>
-        <Link
-          href="#"
-          className="text-sm font-medium hover:underline underline-offset-4"
-          prefetch={false}
-        >
-          Projects
-        </Link>
-        <Link
-          href="#"
-          className="text-sm font-medium hover:underline underline-offset-4"
-          prefetch={false}
-        >
-          Contact
-        </Link>
+        {["About", "Skills", "Projects", "Contact"].map((item, index) => (
+          <motion.div
+            key={item}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: index * 0.1 }}
+          >
+            <Link
+              href={`#${item.toLowerCase()}`}
+              className="text-sm font-medium text-gray-600 hover:text-purple-600 transition-colors"
+              prefetch={false}
+            >
+              {item}
+            </Link>
+          </motion.div>
+        ))}
       </nav>
-    </header>
+    </motion.header>
   );
 }
+
 export default Navbar;
 
-function LaptopIcon(props: any) {
+function CodeIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -60,7 +73,8 @@ function LaptopIcon(props: any) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16" />
+      <polyline points="16 18 22 12 16 6" />
+      <polyline points="8 6 2 12 8 18" />
     </svg>
   );
 }

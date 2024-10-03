@@ -2,12 +2,17 @@ import type { Metadata } from "next";
 import { IBM_Plex_Sans } from "next/font/google";
 import { URL } from "url";
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
+import { ThemeProvider } from "next-themes";
+import { CSPostHogProvider } from "@/providers/posthog-provider";
+import posthog from "posthog-js";
 
 const ibm_plex_sans = IBM_Plex_Sans({
   subsets: ["latin"],
   display: "swap",
   weight: "400",
 });
+
 export const metadata: Metadata = {
   title: "Samarpit Santoki",
   metadataBase: new URL("https://samarpit.dev"),
@@ -67,9 +72,6 @@ export const metadata: Metadata = {
   },
 };
 
-import posthog from "posthog-js";
-import { CSPostHogProvider } from "@/providers/posthog-provider";
-
 posthog.init("", {
   api_host: "https://us.i.posthog.com",
   person_profiles: "always",
@@ -81,10 +83,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <CSPostHogProvider>
-        <body className={ibm_plex_sans.className}>{children}</body>
-      </CSPostHogProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body className={ibm_plex_sans.className}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <CSPostHogProvider>
+            {children}
+            <Toaster position="bottom-right" />
+          </CSPostHogProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

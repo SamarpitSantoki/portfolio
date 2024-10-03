@@ -1,33 +1,30 @@
+"use client";
 import Image from "next/image";
 import { Badge } from "../ui/badge";
+import { motion } from "framer-motion";
+import { ProjectCardProps, projects } from "@/constants/projects";
 
 function ProjectsSection() {
-  const projects: ProjectCardProps[] = [
-    {
-      title: "VP Financials",
-      /*
-        For this i build them a portfolio site from where their members can access their services and also get to know more about them.
-        aslo build an admin dashboard for them to manage their members and also their services.
-        This was for a youtuber called VP Financials
-      */
-      description: "A community management platform for VP Financials.",
-      imageSrc: "/projects/vp-financials.png",
-      imageAlt: "VP Financials",
-      demoLink: "https://vpfinancials.in",
-      href: "https://vpfinancials.in",
-      techStack: ["Next.js", "Tailwind CSS", "Exppress"],
-    },
-  ];
-
   return (
-    <section id="projects" className="w-full py-12 md:py-24 lg:py-32 border-t">
+    <section
+      id="projects"
+      className="w-full py-12 md:py-24 lg:py-32 border-t border-border bg-gradient-to-b from-purple-50 to-white"
+    >
       <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
+        <motion.div
+          className="flex flex-col items-center justify-center space-y-4 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           <div className="space-y-2">
-            <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">
+            <motion.div
+              className="inline-block rounded-lg bg-purple-100 px-3 py-1 text-sm text-purple-600 font-semibold"
+              whileHover={{ scale: 1.05 }}
+            >
               My Projects
-            </div>
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+            </motion.div>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-purple-800">
               Showcasing My Web Development Expertise
             </h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -36,28 +33,30 @@ function ProjectsSection() {
               and user-friendly solutions.
             </p>
           </div>
-        </div>
-        <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3 lg:gap-12">
-          {projects.map((project) => (
-            <ProjectCard key={project.title} {...project} />
+        </motion.div>
+        <motion.div
+          className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3 lg:gap-12"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <ProjectCard {...project} />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 }
-export default ProjectsSection;
 
-interface ProjectCardProps {
-  href: string;
-  imageSrc: string;
-  imageAlt: string;
-  title: string;
-  description: string;
-  codeLink?: string;
-  demoLink?: string;
-  techStack?: string[];
-}
+export default ProjectsSection;
 
 function ProjectCard({
   href,
@@ -69,60 +68,58 @@ function ProjectCard({
   demoLink,
   techStack,
 }: ProjectCardProps) {
-  const openLink = (url: string) => {
-    window.open(url, "_blank");
-  };
-
   return (
-    <div className="relative overflow-hidden transition-transform duration-300 ease-in-out rounded-lg shadow-lg group hover:shadow-xl hover:-translate-y-1">
+    <motion.div
+      className="relative overflow-hidden transition-transform duration-300 ease-in-out rounded-lg shadow-lg group hover:shadow-xl hover:-translate-y-1 bg-background"
+      whileHover={{ scale: 1.03 }}
+    >
       <a href={href} target="_blank" rel="noopener noreferrer">
         <Image
           src={imageSrc}
           width="550"
           height="310"
           alt={imageAlt}
-          className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full cursor-pointer"
+          className="mx-auto aspect-video overflow-hidden rounded-t-lg object-cover object-center sm:w-full cursor-pointer"
         />
       </a>
-      <div className="p-4 bg-background">
+      <div className="p-4">
         <a href={href} target="_blank" rel="noopener noreferrer">
-          <h3 className="text-xl font-bold">{title}</h3>
-          <p className="text-sm text-muted-foreground mb-2">{description}</p>
+          <h3 className="text-xl font-bold text-foreground">{title}</h3>
+          <p className="text-sm text-muted-foreground mb-4">{description}</p>
         </a>
-        <div className="flex justify-between items-start mt-2">
-          <div className="flex gap-2 w-2/3 flex-wrap  ">
-            {techStack?.map((tech) => {
-              return <Badge key={tech}>{tech}</Badge>;
-            })}
-          </div>
-          <div className="flex flex-col gap-2 text-sm font-medium text-right items-end">
+        <div className="flex flex-wrap gap-2 mb-4">
+          {techStack?.map((tech) => (
+            <Badge key={tech} variant="secondary">
+              {tech}
+            </Badge>
+          ))}
+        </div>
+        <div className="flex justify-end gap-4">
+          {demoLink && (
             <a
-              className="flex items-center gap-2 text-sm font-medium hover:border-b border-spacing-2 border-black"
-              style={{
-                display: demoLink ? "flex" : "none",
-              }}
+              className="flex items-center gap-2 text-sm font-medium text-primary hover:underline"
               href={demoLink}
-              target="_top"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <ExternalLinkIcon className="w-4 h-4" />
               <span>Visit</span>
             </a>
-
+          )}
+          {codeLink && (
             <a
-              className="flex items-center gap-2 text-sm font-medium hover:underline underline-offset-4"
-              style={{
-                display: codeLink ? "flex" : "none",
-              }}
+              className="flex items-center gap-2 text-sm font-medium text-primary hover:underline"
               href={codeLink}
               target="_blank"
+              rel="noopener noreferrer"
             >
               <GithubIcon className="w-4 h-4" />
-              <span>View Code</span>
+              <span>Code</span>
             </a>
-          </div>
+          )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
