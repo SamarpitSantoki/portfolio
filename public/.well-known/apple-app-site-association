@@ -1,13 +1,31 @@
 {
   "applinks": {
-    "apps": [],
     "details": [
       {
-        "appID": "73C8P54B59.com.anthony1280.WorldClassLearning",
-        "paths": [
-          "/app/*"
+        "appIDs": [
+          "73C8P54B59.com.anthony1280.WorldClassLearning"
+        ],
+        "components": [
+          {
+            "/": "/app/*"
+          }
         ]
       }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "73C8P54B59.com.anthony1280.WorldClassLearning"
+    ]
+  },
+  "appclips": {
+    "apps": [
+      "73C8P54B59.com.anthony1280.WorldClassLearning"
+    ]
+  },
+  "activitycontinuation": {
+    "apps": [
+      "73C8P54B59.com.anthony1280.WorldClassLearning"
     ]
   }
 }
