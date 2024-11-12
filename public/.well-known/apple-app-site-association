@@ -3,7 +3,7 @@
     "details": [
       {
         "appIDs": [
-          "73C8P54B59.com.anthony1280.WorldClassLearning"
+          "KY3P7PC9X4.com.worldclasslearning.check"
         ],
         "components": [
           {
@@ -15,17 +15,17 @@
   },
   "webcredentials": {
     "apps": [
-      "73C8P54B59.com.anthony1280.WorldClassLearning"
+      "KY3P7PC9X4.com.worldclasslearning.check"
     ]
   },
   "appclips": {
     "apps": [
-      "73C8P54B59.com.anthony1280.WorldClassLearning"
+      "KY3P7PC9X4.com.worldclasslearning.check"
     ]
   },
   "activitycontinuation": {
     "apps": [
-      "73C8P54B59.com.anthony1280.WorldClassLearning"
+      "KY3P7PC9X4.com.worldclasslearning.check"
     ]
   }
 }
