@@ -3,7 +3,7 @@
     "details": [
       {
         "appIDs": [
-          "KY3P7PC9X4.com.worldclasslearning.check"
+          "65H643FCNH.com.worldclasslearning.app"
         ],
         "components": [
           {
@@ -15,17 +15,17 @@
   },
   "webcredentials": {
     "apps": [
-      "KY3P7PC9X4.com.worldclasslearning.check"
+      "65H643FCNH.com.worldclasslearning.app"
     ]
   },
   "appclips": {
     "apps": [
-      "KY3P7PC9X4.com.worldclasslearning.check"
+      "65H643FCNH.com.worldclasslearning.app"
     ]
   },
   "activitycontinuation": {
     "apps": [
-      "KY3P7PC9X4.com.worldclasslearning.check"
+      "65H643FCNH.com.worldclasslearning.app"
     ]
   }
 }
