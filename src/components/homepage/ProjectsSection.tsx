@@ -46,6 +46,10 @@ function ProjectsSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="max-h-96"
+              style={{
+                height: "100%",
+              }}
             >
               <ProjectCard {...project} />
             </motion.div>
@@ -64,13 +68,16 @@ function ProjectCard({
   imageAlt,
   title,
   description,
+  employer,
+  employerLink,
   codeLink,
   demoLink,
+  siteLink,
   techStack,
 }: ProjectCardProps) {
   return (
     <motion.div
-      className="relative overflow-hidden transition-transform duration-300 ease-in-out rounded-lg shadow-lg group hover:shadow-xl hover:-translate-y-1 bg-background"
+      className="relative overflow-hidden transition-transform duration-300 ease-in-out rounded-lg shadow-lg shadow-purple-100 group hover:shadow-xl hover:shadow-purple-200 hover:-translate-y-1 flex-1 h-full"
       whileHover={{ scale: 1.03 }}
     >
       <a href={href} target="_blank" rel="noopener noreferrer">
@@ -82,14 +89,26 @@ function ProjectCard({
           className="mx-auto aspect-video overflow-hidden rounded-t-lg object-cover object-center sm:w-full cursor-pointer"
         />
       </a>
-      <div className="p-4">
+      <div className="p-4 h-full">
         <a href={href} target="_blank" rel="noopener noreferrer">
           <h3 className="text-xl font-bold text-foreground">{title}</h3>
+          {employer && (
+            <p className="text-sm text-purple-600 mb-2">
+              <a
+                href={employerLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                {employer}
+              </a>
+            </p>
+          )}
           <p className="text-sm text-muted-foreground mb-4">{description}</p>
         </a>
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="flex flex-wrap gap-2 mb-4 flex-1 min-h-16">
           {techStack?.map((tech) => (
-            <Badge key={tech} variant="secondary">
+            <Badge key={tech} variant="secondary" className="h-5">
               {tech}
             </Badge>
           ))}
@@ -103,7 +122,18 @@ function ProjectCard({
               rel="noopener noreferrer"
             >
               <ExternalLinkIcon className="w-4 h-4" />
-              <span>Visit</span>
+              <span>Demo</span>
+            </a>
+          )}
+          {siteLink && (
+            <a
+              className="flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+              href={siteLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <ExternalLinkIcon className="w-4 h-4" />
+              <span>Landing</span>
             </a>
           )}
           {codeLink && (

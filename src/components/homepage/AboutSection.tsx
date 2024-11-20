@@ -47,6 +47,7 @@ function AboutSection() {
                 "Front-End Development",
                 "Back-End Development",
                 "Full-Stack Integration",
+                "AI-Enabled Solutions",
               ].map((item, index) => (
                 <motion.li
                   key={item}
@@ -63,6 +64,8 @@ function AboutSection() {
                         "Experienced in building robust server-side applications using Node.js, Express, and various databases like MySQL, PostgreSQL, and MongoDB."}
                       {item === "Full-Stack Integration" &&
                         "Adept at seamlessly integrating front-end and back-end components to create cohesive and scalable web applications."}
+                      {item === "AI-Enabled Solutions" &&
+                        "Skilled in developing AI-powered applications and automation solutions, leveraging machine learning and natural language processing techniques to enhance user experiences and streamline processes."}
                     </p>
                   </div>
                 </motion.li>

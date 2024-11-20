@@ -42,7 +42,7 @@ function MainSection() {
                     sequence={[
                       "Full-Stack Developer",
                       1000,
-                      "UI/UX Enthusiast",
+                      "System Design Enthusiast",
                       1000,
                       "Problem Solver",
                       1000,
