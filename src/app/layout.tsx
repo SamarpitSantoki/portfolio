@@ -72,10 +72,6 @@ export const metadata: Metadata = {
   },
 };
 
-posthog.init("", {
-  api_host: "https://us.i.posthog.com",
-  person_profiles: "always",
-});
 
 export default function RootLayout({
   children,
